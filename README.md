@@ -1,0 +1,2 @@
+# painonnosto
+tsoha-projekti
