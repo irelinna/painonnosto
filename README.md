@@ -9,3 +9,9 @@ Teen tietokantaprojectina salitreenejä seuraavan sovelluksen, jossa toiminnalli
 5. poista tai muokkaa treenikertoja
 6. poista tai muokkaa liikkeitä 
 7. laskea treenin yhteispainomäärän/muita tapoja analysoida tuloksia (jos on aikaa)
+
+# Välipalautus 2
+
+Sovelluksessa on muutama sivu jotka yhdistyvät toisiinsa, ja uuden liikkeen lisäys toimii, testattu myös herokussa.https://tsoha-painonnosto.herokuapp.com/
+
+Tällä kertaa keskityin siihen että sovelluksen rakenne toimii jotta pystyn jatkokehittämään ja lisäämään muutaman lisäsivun ja suurimman osan muista SQL-elementeistä ensi palautusta varten.
