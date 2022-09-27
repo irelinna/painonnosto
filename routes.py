@@ -1,5 +1,6 @@
 from app import app, session
 from db import db
+import users
 from flask import render_template, redirect, request
 
 
@@ -67,3 +68,8 @@ def register():
             return redirect("/")
         else:
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
+
+@app.route("/logout")
+def logout():
+    users.logout()
+    return redirect("/")
