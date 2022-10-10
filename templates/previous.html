@@ -1,8 +1,10 @@
-<form action="/new" method="POST">
-    Aikaisemmat treenit: <br>
-    Tähän tulee jotain
-    <br>
-    
-    </form>
+<form action="/previous" method="GET">
+    Previous workouts: <br>
+    <hr>
+    {% for workout in workouts %}
+    {{ workout.content }}
+    <hr>
+    {% endfor %}
 
-    <a href="/">Etusivulle</a>
+<a href="/frontpage">Return to front page</a>
+

@@ -1,8 +1,15 @@
 <form action="/new" method="POST">
-Lisää liike: <br>
+Add movement: <br>
 <textarea name="content" rows="3" cols="40"></textarea>
+Sets:
+<textarea name="series" rows="1" cols="10"></textarea>
+Reps:
+<textarea name="reps" rows="1" cols="10"></textarea>
+Weight:
+<textarea name="kilos" rows="1" cols="10"></textarea>
 <br>
-<input type="submit" value="Lisää liike treeniin">
-
+<input type="submit" value="Add movement to workout">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
-<a href="/">Etusivulle</a>
+<a href="/list">Previous page</a>
+<a href="/frontpage">Return to front page</a>
