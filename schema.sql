@@ -20,3 +20,14 @@ CREATE TABLE users (
     username TEXT,
     password TEXT
     );
+
+CREATE TABLE stats (
+    id SERIAL PRIMARY KEY,
+    total_weight INTEGER,
+    workout_id INTEGER REFERENCES workouts
+    );
+
+CREATE TABLE movements_in_workout(
+    workout_id SERIAL PRIMARY KEY REFERENCES workouts,
+    movement_id INTEGER REFERENCES movements
+    );

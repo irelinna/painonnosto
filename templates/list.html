@@ -1,17 +1,17 @@
 <form action="/list" method="GET">
-    Editing workout x
+    Editing workout {{name}}
     <hr>
     {% for movement in movements %}
     Name: {{ movement.content }}, sets: {{ movement.series }}, reps: {{ movement.reps }}, weight: {{ movement.kilos }}
     <input type="submit" name="add_to_workout" value="Add movement to workout">
+    <input type="hidden" name="movement_name" value="movement.content">
     <hr>
     {% endfor %}
 </form>
 <form action="/list" method="POST">
 
-
-<input type="submit" name="add_movement" value="Add movement">
-<input type="submit" name="finish_workout" value="Finish and save workout">
+    <input type="submit" name="add_new_movement" value="Add new movement">
+    <input type="submit" name="finish_workout" value="Finish and save workout">
 </form>
 
 <a href="/frontpage">Return to front page</a>

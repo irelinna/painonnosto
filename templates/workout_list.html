@@ -1,0 +1,11 @@
+<form action="/workout_list" method="GET">
+    Viewing workout {{name}}
+    <hr>
+    {% for movement in movements %}
+    Name: {{ movement.content }}, sets: {{ movement.series }}, reps: {{ movement.reps }}, weight: {{ movement.kilos }}
+    <input type="hidden" name="movement_name" value="movement.content">
+    <hr>
+    {% endfor %}
+</form>
+
+<a href="/frontpage">Return to front page</a>
