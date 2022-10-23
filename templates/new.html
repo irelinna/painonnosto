@@ -1,15 +1,29 @@
-<form action="/new" method="POST">
-Add movement: <br>
-<textarea name="content" rows="3" cols="40"></textarea>
-Sets:
-<textarea name="series" rows="1" cols="10"></textarea>
-Reps:
-<textarea name="reps" rows="1" cols="10"></textarea>
-Weight:
-<textarea name="kilos" rows="1" cols="10"></textarea>
-<br>
-<input type="submit" value="Add movement to workout">
+{% extends "layout.html" %}
+{% block title %}New movement{% endblock %}
+{% block content %}
+
+<form action="/new" method="GET">
+
+    Adding to workout {{ workout.workout_name }}
+
+</form>
+
+<form action="" method="POST">
+    <br>
+    Add movement: <br>
+    <textarea name="movement_name" rows="3" cols="40"></textarea>
+    Sets:
+    <textarea name="series" rows="1" cols="10"></textarea>
+    Reps:
+    <textarea name="reps" rows="1" cols="10"></textarea>
+    Weight:
+    <textarea name="kilos" rows="1" cols="10"></textarea>
+    <br>
+
+<input type="submit" name= "add_movement" value="Add movement to workout">
 <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 <a href="/list">Previous page</a>
 <a href="/frontpage">Return to front page</a>
+
+{% endblock %}

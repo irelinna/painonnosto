@@ -1,9 +1,13 @@
-<form action="/frontpage" method="POST">
-Workout tracker
+{% extends "layout.html" %}
+{% block title %} Frontpage {% endblock %}
+{% block content %}
+
+<form action="/frontpage" accept-charset="utf-8" method="POST">
+
 <br>
 <input type="submit" name="new_workout" value="New workout">
 <input type="submit" name="previous_workout" value="Previous workouts">
-<br>
-
 
 </form>
+
+{% endblock %}

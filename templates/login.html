@@ -1,13 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Login page{% endblock %}
+{% block content %}
+
 {% if session.username %}
 <p>You've logged in with username {{ session.username }}</p>
 <a href="/logout">Logout</a>
 <a href="/frontpage">Return to front page</a>
+
 {% else %}
 <form action="/login" method="POST">
+
 <p>Username:<br>
 <input type="text" name="username"></p>
+
 <p>Password:<br>
 <input type="password" name="password"></p>
+
 <input type="submit" value="Login">
 </form>
+
 {% endif %}
+
+{% endblock %}
