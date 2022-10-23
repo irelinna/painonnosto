@@ -12,6 +12,12 @@ Teen tietokantaprojectina salitreenejä seuraavan sovelluksen, jossa toiminnalli
 
 # Välipalautus 2
 
-Sovelluksessa on muutama sivu jotka yhdistyvät toisiinsa, ja uuden liikkeen lisäys toimii, testattu myös herokussa.https://tsoha-painonnosto.herokuapp.com/
+Sovelluksessa on muutama sivu jotka yhdistyvät toisiinsa, ja uuden liikkeen lisäys toimii, testattu myös herokussa.
 
 Tällä kertaa keskityin siihen että sovelluksen rakenne toimii jotta pystyn jatkokehittämään ja lisäämään muutaman lisäsivun ja suurimman osan muista SQL-elementeistä ensi palautusta varten.
+
+# Loppupalautus
+
+Sovellus on toiminnallinen, ja tavoitteista suurin osa toteutui. Sovelluksessa voi rekisteröityä, kirjautua, luoda uuden treenin ja siihen liikkeitä, katsoa edellisiä treenejä ja editoida niitä, sekä nähdä treenin aikana suoritetun painomäärän. Ulkoasu jäi vajaaksi, mutta layout toimii jokaisella sivulla. 
+
+Sovellus on testattavissa Herokussa. https://tsoha-painonnosto.herokuapp.com/
