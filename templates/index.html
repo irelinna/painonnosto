@@ -1,10 +1,12 @@
-
+{% extends "layout.html" %}
+{% block title %}Login page{% endblock %}
+{% block content %}
 <form action="/" method="POST">
-Workout tracker
-<br>
-<input type="submit" name="register_button" value="Register">
-<input type="submit" name="login_button" value="Login">
-<br>
 
+<br>
+<input type="submit" name='register_button' value='Register'>
+<input type="submit" name='login_button' value='Login'>
+<br>
 
 </form>
+{% endblock %}

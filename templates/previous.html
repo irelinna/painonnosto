@@ -1,11 +1,13 @@
-<form action="/previous" method="GET">
-    Previous workouts: <br>
+{% extends "layout.html" %}
+{% block title %}Previous workouts{% endblock %}
+{% block content %}
+<form action="/previous" method="POST">
+    Your workouts:
     <hr>
     {% for workout in workouts %}
-    {{ workout.content }}
-    <input type="submit" name="workout_details" value="Workout details">
+    Name: {{ workout.workout_name }}
+    <input type="submit" name="workout_id" value={{workout.id}} text="View workout">
     <hr>
     {% endfor %}
 
-<a href="/frontpage">Return to front page</a>
-
+{% endblock %}

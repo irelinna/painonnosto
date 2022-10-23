@@ -1,0 +1,21 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Workout Tracker - {% block title %}{% endblock %}</title>
+<body>
+<h1>Workout Tracker</h1>
+<nav>
+    <ul>
+      <li><a href="/frontpage">Frontpage</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
+      <li><a href="/workout_name">New workout</a></li>
+    </ul>
+  </nav>
+
+
+<hr>
+{% block content %}{% endblock %}
+<hr>
+</body>

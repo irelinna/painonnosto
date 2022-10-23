@@ -2,29 +2,39 @@ from db import db
 from flask import request
 
 
-def add_movement(content,series,reps,kilos):
-    sql = "INSERT INTO movements (content,series,reps,kilos) VALUES (:content,:series,:reps,:kilos)"
-    db.session.execute(sql, {"content":content,"series":series,"reps":reps,"kilos":kilos})
+def add_movement(movement_name,series,reps,kilos):
+    sql = "INSERT INTO movements (movement_name,series,reps,kilos) VALUES (:movement_name,:series,:reps,:kilos)"
+    db.session.execute(sql, {"movement_name":movement_name,"series":series,"reps":reps,"kilos":kilos})
     db.session.commit()
 
-def add_workout(movements):
-    for movement in movements:
-        movement_id = movement.id
-        sql = "INSERT INTO workouts (movement_id) VALUES (:movement_id)"
-        db.session.execute(sql, {"movement_id":movement_id})
-        db.session.commit()
 
-def list_movements():
-    result = db.session.execute("SELECT * FROM movements")
-    movements = result.fetchall()
-    return movements
+def total_weight_in_movement(movement_id):
+    id, = movement_id
+    movement = get_movement_by_id(id)
+    weight = movement.series*movement.reps*movement.kilos
+    return weight
 
-def list_movements_by_workout(workouts):
-    workout_id = workouts.id
-    sql = "SELECT * FROM movements_in_workout, workouts WHERE movements_in_workout.workout_id = (:workout_id)"
+def total_weight(workout_id):
+    sql = "SELECT total_weight FROM stats WHERE workout_id = (:workout_id)"
     result = db.session.execute(sql, {"workout_id":workout_id})
-    movements = result.fetchall()
-    return movements
+    return result
+    
+
+def insert_weight_to_stats(weight,workout_id):
+    sql = "INSERT INTO stats (total_weight, workout_id) VALUES (:weight, :workout_id)"
+    db.session.execute(sql, {"workout_id":workout_id,"weight":weight})
+    db.session.commit()
+
+
+def add_movement_id_to_workout(movement_id, workout_id):
+    sql = "INSERT INTO movements_in_workout (workout_id, movement_id) VALUES (:workout_id, :movement_id)"
+    db.session.execute(sql, {"workout_id":workout_id,"movement_id":movement_id})
+    db.session.commit()
+
+def get_movements_in_workout(workout_id):
+    sql = "SELECT movement_id FROM movements_in_workout WHERE workout_id = (:workout_id)"
+    result = db.session.execute(sql, {"workout_id":workout_id})
+    return result.fetchall()
 
 
 def list_workouts():
@@ -33,32 +43,34 @@ def list_workouts():
     return workouts
 
 
-def get_movement_name(movement_id):
-    sql = "SELECT content FROM movements WHERE movements.id = (movement_id)"
-    result = db.session.execute(sql,{"movement_id":movement_id})
-    movement_name = result.fetchone()
-    return movement_name
+def get_movement_id(name):
+    sql = "SELECT id FROM movements WHERE movement_name = (:name)"
+    result = db.session.execute(sql, {'name':name})
+    movement_id = result.fetchone()
+    return movement_id
 
-def add_movement_to_workout(movement_name):
-    sql = "INSERT INTO workouts (movement_id) VALUES (:id) SELECT id FROM movements WHERE movements.content = (:movement_name)"
-    db.session.execute(sql, {"movement_name":movement_name})
-    db.session.commit()
+
+def get_movement_by_id(movement_id):
+    sql = "SELECT * FROM movements WHERE id = (:movement_id)"
+    result = db.session.execute(sql, {'movement_id':movement_id})
+    movement = result.fetchone()
+    return movement
+
 
 def add_workout_name(name):
-    sql = "INSERT INTO workouts (content) VALUES (:name)"
+    sql = "INSERT INTO workouts (workout_name) VALUES (:name)"
     db.session.execute(sql, {'name':name})
     db.session.commit()
 
-def get_workout_name(id):
-    sql = "SELECT content FROM workouts WHERE id = (:id)"
-    result = db.session.execute(sql, {'id':id})
-    workout_name = result.fetchone()
-    return workout_name
 
-def get_workout_id(name):
-    sql = "SELECT id FROM workouts WHERE content = (:name)"
+def get_workout(workout_id):
+    sql = "SELECT * FROM workouts WHERE id = (:workout_id)"
+    result = db.session.execute(sql, {'workout_id':workout_id})
+    workout = result.fetchone()
+    return workout
+
+def get_workout_by_name(name):
+    sql = "SELECT * FROM workouts WHERE workout_name = (:name)"
     result = db.session.execute(sql, {'name':name})
-    workout_id = result.fetchone()
-    return workout_id
-
-
+    workout = result.fetchone()
+    return workout

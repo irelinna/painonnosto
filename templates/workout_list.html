@@ -1,11 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}Previous workouts{% endblock %}
+{% block content %}
+
 <form action="/workout_list" method="GET">
-    Viewing workout {{name}}
+    Viewing workout {{workout.workout_name}}
+    <br>Total weight in this workout: {{stats}}
     <hr>
     {% for movement in movements %}
-    Name: {{ movement.content }}, sets: {{ movement.series }}, reps: {{ movement.reps }}, weight: {{ movement.kilos }}
-    <input type="hidden" name="movement_name" value="movement.content">
+    Name: {{ movement.movement_name }}, sets: {{ movement.series }}, reps: {{ movement.reps }}, weight: {{ movement.kilos }}
+    
     <hr>
     {% endfor %}
 </form>
 
-<a href="/frontpage">Return to front page</a>
+<form action="" method="POST">
+    
+    <input type="submit" name="edit_workout" value="Edit workout">
+</form>
+
+{% endblock %}

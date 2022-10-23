@@ -1,3 +1,6 @@
+{% extends "layout.html" %}
+{% block title %}Workout name{% endblock %}
+{% block content %}
 <form action="/workout_name" method="POST">
     Enter workout name:
     <br>
@@ -6,3 +9,5 @@
     <input type="submit" name="start_workout" value="Start workout">
     
     </form>
+
+{% endblock %}
